@@ -17,13 +17,21 @@ const images = [
 const list = document.querySelector(".gallery");
 list.style.listStyle = "none"
 
-images.forEach(function (number, index) {
-  const navEl = document.createElement("li")
-  navEl.style.boxShadow = "0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),0px 2px 1px rgba(0, 0, 0, 0.2)";
-  navEl.style.borderRadius = "2px 2px 4px 4px";
-  navEl.style.marginTop = "10px";
-  navEl.style.background = "gray";
-  navEl.style.width="505px";
-  navEl.insertAdjacentHTML('beforeend', `<img src='${number.url}' alt='${number.alt}'  width="500" height="300">`);
-  list.prepend(navEl)
-});
+// images.forEach(function (number, index) {
+//   const navEl = document.createElement("li")
+//   navEl.style.boxShadow = "0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),0px 2px 1px rgba(0, 0, 0, 0.2)";
+//   navEl.style.borderRadius = "2px 2px 4px 4px";
+//   navEl.style.marginTop = "10px";
+//   navEl.style.background = "gray";
+//   navEl.style.width="505px";
+//   navEl.insertAdjacentHTML('beforeend', `<img src='${number.url}' alt='${number.alt}'  width="500" height="300">`);
+//   list.prepend(navEl)
+// });
+
+
+const img = images.map((el) => {
+  return `<img src='${el.url}' alt='${el.alt}'  width="500" height="300">`
+}).join('');
+
+list.insertAdjacentHTML('beforeend',
+  img);
